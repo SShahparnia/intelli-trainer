@@ -1,8 +1,10 @@
 # IntelliTrainer: Bicep Curl Repetition Tracker
 
-A lightweight real-time computer vision app using MediaPipe and OpenCV to count bicep curls and hammer curls for both arms using your webcam.
+A lightweight real-time computer vision app using MediaPipe and OpenCV to track **bicep curls and hammer curls** for both arms using your webcam.
 
 Designed to run efficiently on macOS (Intel-based) with no GPU required.
+
+> **Note:** Current functionality is limited to **bicep motion tracking only**. Support for full-body workouts (e.g., squats, push-ups, shoulder presses) is under development.
 
 ---
 
@@ -58,3 +60,4 @@ intelli_trainer/
 - Counts a rep when the arm fully contracts and returns to rest
 
 ---
+
