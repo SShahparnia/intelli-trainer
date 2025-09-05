@@ -36,32 +36,34 @@ with mp_pose.Pose(min_detection_confidence=0.5,
         try:
             landmarks = results.pose_landmarks.landmark
 
-            # RIGHT ARM
-            r_shoulder = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x,
-                          landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y]
-            r_elbow = [landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].x,
-                       landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].y]
-            r_wrist = [landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].x,
-                       landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].y]
-            right_angle = calculate_angle(r_shoulder, r_elbow, r_wrist)
 
-            # RIGHT rep logic
-            if right_angle > max_angle:
-                right_stage = "down"
-            if right_angle < min_angle and right_stage == "down":
-                right_stage = "up"
-                right_count += 1
-
-            # LEFT ARM
+            # MIRRORED CAMERA: Swap left/right logic
+            # LEFT ARM (actually user's right)
             l_shoulder = [landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].x,
                           landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].y]
             l_elbow = [landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].x,
                        landmarks[mp_pose.PoseLandmark.LEFT_ELBOW.value].y]
             l_wrist = [landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].x,
                        landmarks[mp_pose.PoseLandmark.LEFT_WRIST.value].y]
-            left_angle = calculate_angle(l_shoulder, l_elbow, l_wrist)
+            right_angle = calculate_angle(l_shoulder, l_elbow, l_wrist)
 
-            # LEFT rep logic
+            # RIGHT ARM (actually user's left)
+            r_shoulder = [landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].x,
+                          landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y]
+            r_elbow = [landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].x,
+                       landmarks[mp_pose.PoseLandmark.RIGHT_ELBOW.value].y]
+            r_wrist = [landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].x,
+                       landmarks[mp_pose.PoseLandmark.RIGHT_WRIST.value].y]
+            left_angle = calculate_angle(r_shoulder, r_elbow, r_wrist)
+
+            # RIGHT rep logic (user's right arm)
+            if right_angle > max_angle:
+                right_stage = "down"
+            if right_angle < min_angle and right_stage == "down":
+                right_stage = "up"
+                right_count += 1
+
+            # LEFT rep logic (user's left arm)
             if left_angle > max_angle:
                 left_stage = "down"
             if left_angle < min_angle and left_stage == "down":
