@@ -1,16 +1,19 @@
+
 # IntelliTrainer: Fitness Motion & Repetition Tracker
 
-A lightweight real-time computer vision app using MediaPipe and OpenCV to *CURRENTLY* track **bicep curls and hammer curls** for both arms using your webcam.
+A lightweight real-time computer vision app using MediaPipe and OpenCV to track **bicep curls, shoulder presses, pushups, and squats** for both arms/legs using your webcam.
 
-> **Note:** Current functionality is limited to **bicep motion tracking only**. Support for full-body workouts (e.g., squats, push-ups, shoulder presses) is under development.
+> **Note:** The app now supports bicep curls, shoulder presses, pushups, and squats. Future progress will include more functional exercises such as pullup types (archer, typewriter, one arm, two arm, close, wide, normal grip, etc).
 
 ---
 
+
 ## Features
 
-- Tracks left and right arms independently
+- Tracks bicep curls, shoulder presses, pushups, and squats
+- Tracks left and right arms independently (for arm-based exercises)
 - Works from front-facing or side-facing views
-- Uses elbow joint angle to detect rep cycles
+- Uses joint angles (elbow, knee) to detect rep cycles
 - Real-time feedback overlay on camera feed
 
 ---
@@ -51,11 +54,27 @@ intelli_trainer/
 
 ---
 
+
 ## How It Works
 
 - Uses MediaPipe Pose to extract body landmarks
-- Calculates elbow angle for each arm (shoulder–elbow–wrist)
-- Counts a rep when the arm fully contracts and returns to rest
+- Calculates joint angles (elbow for arms, knee for squats)
+- Counts a rep when the limb fully contracts and returns to rest/extension
+- Displays real-time rep counts for each exercise on the camera feed
+
+---
+
+## Roadmap / Future Progress
+
+- Add support for more functional exercises, especially pullup types:
+	- Archer pullup
+	- Typewriter pullup
+	- One arm pullup
+	- Two arm pullup
+	- Close grip pullup
+	- Wide grip pullup
+	- Normal grip pullup
+	- ...and more!
 
 ---
 
