@@ -25,7 +25,7 @@ min_angle = 40
 max_angle = 160
 stage = None
 rep_count = 0
-
+# gooners
 cap = None
 if run:
     cap = cv2.VideoCapture(0)
