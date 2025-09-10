@@ -120,5 +120,5 @@ if run:
             pass
         rep_placeholder.metric("Reps", rep_count)
         angle_placeholder.metric("Angle", int(angle))
-        FRAME_WINDOW.image(frame)
+        FRAME_WINDOW.image(rgb)
     cap.release()
